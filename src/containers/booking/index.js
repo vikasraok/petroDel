@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from './src/actions/vehicle';
+import * as Actions from '../../actions/booking';
 class App extends Component {
   render() {
-    return <div />;
+    return <div>Booking</div>;
   }
 }
 const mapStateToProps = (state, ownProps) => ({

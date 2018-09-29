@@ -1,0 +1,12 @@
+.App{
+    &-header {
+    background-color: #DDD;
+    height: 60px;
+    color: white;}
+    &-title {
+      font-size: 1.5em;
+    }
+    &-intro {
+      font-size: large;
+    }
+  }
