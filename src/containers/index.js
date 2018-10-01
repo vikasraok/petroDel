@@ -15,14 +15,14 @@ import {
 } from 'reactstrap';
 import Icon from 'react-icons-kit';
 import { ic_notifications_none } from 'react-icons-kit/md/ic_notifications_none';
-const isAuthenticated = () => {
+const isAuthenticated = props => {
   return true;
 };
 export default ({ component: C, props: cProps, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      isAuthenticated() ? (
+      isAuthenticated(props) ? (
         <div className="app">
           {/* <header className="app-header"></header> */}
           <Navbar color="primary" dark expand="md">
@@ -40,6 +40,7 @@ export default ({ component: C, props: cProps, ...rest }) => (
                       <img
                         src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
                         width="40"
+                        alt="user"
                       />
                       <span>John Doe</span>
                     </div>
@@ -55,11 +56,11 @@ export default ({ component: C, props: cProps, ...rest }) => (
           </Navbar>
           <div className="app-page">
             <div className="app-sidenav">
-              <NavLink to="/admin">Dashboard</NavLink>
-              <NavLink to="/booking">Order Booking</NavLink>
-              <NavLink to="/customer">Customer</NavLink>
-              <NavLink to="/driver">Driver</NavLink>
-              <NavLink to="/vehicle">Vehicle</NavLink>
+              <NavLink to="/channel/admin">Dashboard</NavLink>
+              <NavLink to="/channel/booking">Order Booking</NavLink>
+              <NavLink to="/channel/customer">Customer</NavLink>
+              <NavLink to="/channel/driver">Driver</NavLink>
+              <NavLink to="/channel/vehicle">Vehicle</NavLink>
             </div>
             <div className="app-main">
               <C {...props} {...cProps} />

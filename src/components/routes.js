@@ -1,9 +1,14 @@
 import React from 'react';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  Switch,
+  BrowserRouter as Router,
+  Route,
+  Redirect
+} from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Loading from './loadable';
 /* routes */
-import Main from '../containers/';
+import Customer from '../containers/';
 /* loadables */
 const Async404 = Loadable({
   loader: () => import('../containers/notFound'),
@@ -38,12 +43,15 @@ export default () => {
   return (
     <Router>
       <Switch>
-        <Main path="/admin" component={AsyncAdmin} exact />
-        <Main path="/booking" component={AsyncBooking} exact />
-        <Main path="/customer" component={AsyncCustomer} exact />
-        <Main path="/driver" component={AsyncDriver} exact />
-        <Main path="/vehicle" component={AsyncVehicle} exact />
-        <Main path="/login" component={AsyncLogin} exact />
+        <Route path="/" exact>
+          <Redirect from="/" to="/login" />
+        </Route>
+        <Customer path="/channel/admin" component={AsyncAdmin} exact />
+        <Customer path="/channel/booking" component={AsyncBooking} exact />
+        <Customer path="/channel/customer" component={AsyncCustomer} exact />
+        <Customer path="/channel/driver" component={AsyncDriver} exact />
+        <Customer path="/channel/vehicle" component={AsyncVehicle} exact />
+        <Route path="/login" component={AsyncLogin} exact />
         <Route component={Async404} />
       </Switch>
     </Router>
