@@ -16,10 +16,11 @@ import {
   DropdownItem,
   Pagination,
   PaginationItem,
-  PaginationLink
+  PaginationLink,
+  Table
 } from 'reactstrap';
 import Item from './items';
-export default class Table extends Component {
+export default class TableWrapper extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -89,12 +90,22 @@ export default class Table extends Component {
                       <PaginationItem>
                         <PaginationLink previous href="#" />
                       </PaginationItem>
-
                       <PaginationItem>
                         <PaginationLink next href="#" />
                       </PaginationItem>
                     </Pagination>
                   </Col>
+                </Row>
+                <Row>
+                  <Table>
+                    <thead>
+                      <tr>
+                        {props.tableHeader.map((value, index) => {
+                          return <th key={index}>{value}</th>;
+                        })}
+                      </tr>
+                    </thead>
+                  </Table>
                 </Row>
               </TabPane>
             );

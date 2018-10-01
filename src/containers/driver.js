@@ -10,7 +10,7 @@ const navHeader = ['Active Drivers', 'Idle Drivers', 'Offline Drivers'];
 const tableHeader = [
   'Driver Name',
   'Contact Number',
-  'Vehivle #',
+  'Vehicle #',
   'Status',
   'Action'
 ];
