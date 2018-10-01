@@ -5,7 +5,7 @@ import './index.scss';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store';
 import 'bootstrap/dist/css/bootstrap.css';
-import Routes from './components/routes/';
+import Routes from './components/routes';
 
 ReactDOM.render(
   <Provider store={configureStore()}>
