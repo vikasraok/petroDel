@@ -13,11 +13,20 @@ export default props => {
           styles={customStyles}
           options={states}
           placeholder={'Select Region'}
+          value={props.region}
+          onChange={props.regionSelected}
         />
         <div className="separator" />
-        <Select styles={customStyles} placeholder={'Actions'} />
+        <Select
+          styles={customStyles}
+          placeholder={'Actions'}
+          options={props.actionOptions}
+          onChange={props.actionSelected}
+        />
         <div className="separator" />
-        <Button color="primary">Add New Driver</Button>
+        <Button color="primary" onClick={props.actionCallBack}>
+          {props.action}
+        </Button>
       </Col>
     </Row>
   );

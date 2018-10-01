@@ -3,10 +3,8 @@ const meta = {
   margin: '0 20px 20px 0',
   padding: '5px 20px',
   display: 'inline-block',
-  border: '1px solid #cecece'
-};
-const value = {
-  color: '#007bff'
+  border: '1px solid #cecece',
+  borderRadius: '4px'
 };
 const label = {
   color: '#444'
@@ -14,8 +12,15 @@ const label = {
 export default props => {
   return (
     <div style={meta}>
-      <h2 style={value} className={`text-${props.class}`}>
-        {props.value}
+      <h2 className={`text-${props.class}`}>
+        {props.type === 'currency' ? (
+          <span>
+            &#8377;
+            {props.value}
+          </span>
+        ) : (
+          props.value
+        )}
       </h2>
       <span style={label}>{props.label}</span>
     </div>
