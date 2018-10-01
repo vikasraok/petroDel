@@ -24,7 +24,11 @@ export default props => {
           onChange={props.actionSelected}
         />
         <div className="separator" />
-        <Button color="primary" onClick={props.actionCallBack}>
+        <Button
+          color="primary"
+          onClick={props.actionCallBack}
+          style={{ minWidth: '155px' }}
+        >
           {props.action}
         </Button>
       </Col>

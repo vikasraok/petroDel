@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <Header action="Add New Booking" />
+        <Header action="Add New Vehicle" />
         <Meta
           dashBoard={[
             {

@@ -8,6 +8,11 @@ $gray : #cecece;
     padding: 0 1rem;
     padding-top: 0.4rem;
   }
+  a{
+    &:hover{
+      cursor: pointer;
+    }
+  }
   .user{
     display: inline-block;
     img{

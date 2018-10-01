@@ -10,7 +10,10 @@ export default {
     ...base,
     'min-height': '40px',
     'background-color': 'rgba(0,0,0,0)',
-    'box-shadow': 'none'
+    'box-shadow': 'none',
+    ':hover': {
+      cursor: 'pointer'
+    }
   }),
   option: base => ({
     ...base,

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as Actions from '../../actions/customer';
 class App extends Component {
   render() {
-    return <div>Customer</div>;
+    return <div />;
   }
 }
 const mapStateToProps = (state, ownProps) => ({
