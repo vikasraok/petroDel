@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Route, Redirect, NavLink } from 'react-router-dom';
 import './style.scss';
 import {
   Collapse,
@@ -7,7 +7,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
+  NavLink as Link,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -15,14 +15,14 @@ import {
 } from 'reactstrap';
 import Icon from 'react-icons-kit';
 import { ic_notifications_none } from 'react-icons-kit/md/ic_notifications_none';
-import { ic_home } from 'react-icons-kit/md/ic_home';
-import { ic_insert_drive_file } from 'react-icons-kit/md/ic_insert_drive_file';
-import { ic_person } from 'react-icons-kit/md/ic_person';
+const isAuthenticated = () => {
+  return true;
+};
 export default ({ component: C, props: cProps, ...rest }) => (
   <Route
     {...rest}
-    render={(props /* cProps.isAuthenticated */) =>
-      true ? (
+    render={props =>
+      isAuthenticated() ? (
         <div className="app">
           {/* <header className="app-header"></header> */}
           <Navbar color="primary" dark expand="md">
@@ -30,9 +30,9 @@ export default ({ component: C, props: cProps, ...rest }) => (
             <Collapse isOpen={true} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="#" className="notification">
+                  <Link href="#" className="notification">
                     <Icon icon={ic_notifications_none} size={28} />
-                  </NavLink>
+                  </Link>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
@@ -47,8 +47,6 @@ export default ({ component: C, props: cProps, ...rest }) => (
                   <DropdownMenu right>
                     <DropdownItem>Profile</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Support</DropdownItem>
-                    <DropdownItem divider />
                     <DropdownItem>Logout</DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
@@ -57,11 +55,11 @@ export default ({ component: C, props: cProps, ...rest }) => (
           </Navbar>
           <div className="app-page">
             <div className="app-sidenav">
-              <Link to="/admin">Dashboard</Link>
-              <Link to="/booking">Order Booking</Link>
-              <Link to="/customer">Customer</Link>
-              <Link to="/driver">Driver</Link>
-              <Link to="/vehicle">Vehicle</Link>
+              <NavLink to="/admin">Dashboard</NavLink>
+              <NavLink to="/booking">Order Booking</NavLink>
+              <NavLink to="/customer">Customer</NavLink>
+              <NavLink to="/driver">Driver</NavLink>
+              <NavLink to="/vehicle">Vehicle</NavLink>
             </div>
             <div className="app-main">
               <C {...props} {...cProps} />

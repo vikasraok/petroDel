@@ -1,11 +1,9 @@
 import React from 'react';
-import { Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Loading from '../loadable';
 /* routes */
-import AppliedRoute from './applied';
-import AuthenticatedRoute from './authenticated';
-import UnauthenticatedRoute from './unauthenticated';
+import Main from '../../containers';
 /* loadables */
 const Async404 = Loadable({
   loader: () => import('../../containers/notFound'),
@@ -40,13 +38,13 @@ export default () => {
   return (
     <Router>
       <Switch>
-        <AuthenticatedRoute path="/admin" component={AsyncAdmin} exact />
-        <AuthenticatedRoute path="/booking" component={AsyncBooking} exact />
-        <AuthenticatedRoute path="/customer" component={AsyncCustomer} exact />
-        <AuthenticatedRoute path="/driver" component={AsyncDriver} exact />
-        <AuthenticatedRoute path="/vehicle" component={AsyncVehicle} exact />
-        <UnauthenticatedRoute path="/login" component={AsyncLogin} exact />
-        <AppliedRoute component={Async404} />
+        <Main path="/admin" component={AsyncAdmin} exact />
+        <Main path="/booking" component={AsyncBooking} exact />
+        <Main path="/customer" component={AsyncCustomer} exact />
+        <Main path="/driver" component={AsyncDriver} exact />
+        <Main path="/vehicle" component={AsyncVehicle} exact />
+        <Main path="/login" component={AsyncLogin} exact />
+        <Route component={Async404} />
       </Switch>
     </Router>
   );
