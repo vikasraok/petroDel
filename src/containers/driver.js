@@ -1,46 +1,50 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../../actions/booking';
+import * as Actions from '../actions/booking';
 import { Container } from 'reactstrap';
-import Header from '../../components/actionBar';
-import Meta from '../../components/meta/';
+import Header from '../components/actionBar';
+import Meta from '../components/meta';
+
+const navHeader = ['Active Drivers', 'Idle Drivers', 'Offline Drivers'];
+const tableHeader = [
+  'Driver Name',
+  'Contact Number',
+  'Vehivle #',
+  'Status',
+  'Action'
+];
 class App extends Component {
   render() {
     return (
       <Container>
-        <Header action="Add New Booking" />
+        <Header action="Add New Driver" />
         <Meta
           dashBoard={[
             {
-              value: '1000',
-              label: 'Order Bookings',
-              class: 'primary'
+              value: '100',
+              label: 'Drivers Online',
+              class: 'success'
             },
             {
-              value: '100',
-              label: 'Cancelled Orders',
+              value: '50',
+              label: 'Idle Drivers',
               class: 'warning'
             },
             {
-              value: '1007575',
-              label: 'Tatal Kms Run',
-              class: 'primary'
+              value: '120',
+              label: 'Offline Drivers',
+              class: 'muted'
             },
             {
               value: '10000',
               type: 'currency',
-              label: 'Cash Collected',
+              label: 'Driver Income',
               class: 'primary'
             },
             {
-              value: '10000',
-              label: 'Total Online Payments',
-              class: 'primary'
-            },
-            {
-              value: '02',
-              label: 'Emergency Requests',
+              value: '50',
+              label: 'Unassigned Order',
               class: 'danger'
             }
           ]}

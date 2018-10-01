@@ -14,23 +14,23 @@ const AsyncLogin = Loadable({
   loading: Loading
 });
 const AsyncAdmin = Loadable({
-  loader: () => import('../containers/admin'),
+  loader: () => import('../containers/admin.js'),
   loading: Loading
 });
 const AsyncBooking = Loadable({
-  loader: () => import('../containers/booking'),
+  loader: () => import('../containers/booking.js'),
   loading: Loading
 });
 const AsyncCustomer = Loadable({
-  loader: () => import('../containers/customer'),
+  loader: () => import('../containers/customer.js'),
   loading: Loading
 });
 const AsyncDriver = Loadable({
-  loader: () => import('../containers/driver'),
+  loader: () => import('../containers/driver.js'),
   loading: Loading
 });
 const AsyncVehicle = Loadable({
-  loader: () => import('../containers/vehicle'),
+  loader: () => import('../containers/vehicle.js'),
   loading: Loading
 });
 

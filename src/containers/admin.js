@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../../actions/customer';
+import * as Actions from '../actions/booking';
+import { Container, Row, Col } from 'reactstrap';
 class App extends Component {
   render() {
-    return <div />;
+    return (
+      <Container>
+        <Row>
+          <Col />
+        </Row>
+      </Container>
+    );
   }
 }
 const mapStateToProps = (state, ownProps) => ({
