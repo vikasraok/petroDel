@@ -97,15 +97,17 @@ export default class TableWrapper extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Table>
-                    <thead>
-                      <tr>
-                        {props.tableHeader.map((value, index) => {
-                          return <th key={index}>{value}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                  </Table>
+                  <Col>
+                    <Table>
+                      <thead>
+                        <tr>
+                          {props.tableHeader.map((value, index) => {
+                            return <th key={index}>{value}</th>;
+                          })}
+                        </tr>
+                      </thead>
+                    </Table>
+                  </Col>
                 </Row>
               </TabPane>
             );
