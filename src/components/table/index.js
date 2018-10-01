@@ -6,7 +6,17 @@ import {
   TabPane,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  InputGroup,
+  InputGroupAddon,
+  Input,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Pagination,
+  PaginationItem,
+  PaginationLink
 } from 'reactstrap';
 import Item from './items';
 export default class Table extends Component {
@@ -56,7 +66,35 @@ export default class Table extends Component {
                 }
               >
                 <Row>
-                  <Col>{index}</Col>
+                  <Col md="4">
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        &#128269;
+                      </InputGroupAddon>
+                      <Input placeholder="Search using Name/Mobile #" />
+                    </InputGroup>
+                  </Col>
+                  <Col>
+                    <UncontrolledDropdown>
+                      <DropdownToggle caret color="transparent">
+                        More
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem header>None</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </Col>
+                  <Col className="float-right text-right">
+                    <Pagination aria-label="Page navigation">
+                      <PaginationItem>
+                        <PaginationLink previous href="#" />
+                      </PaginationItem>
+
+                      <PaginationItem>
+                        <PaginationLink next href="#" />
+                      </PaginationItem>
+                    </Pagination>
+                  </Col>
                 </Row>
               </TabPane>
             );

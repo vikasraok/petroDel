@@ -78,8 +78,24 @@ $gray : #cecece;
     }
     .tab-content{
       padding: 20px 0;
+      nav{
+        padding: 0;
+        height: 40px;
+      }
       .row{
         padding-bottom: 20px;
+      }
+      .input-group-text{
+        background: none;
+      }.dropdown{
+        height: 40px;
+        margin-top: -2px;
+        .btn{
+          color: #444;
+          border: 1px solid #cecece;
+        }
+      }.pagination{
+        display: inline-flex;
       }
     }
   }
