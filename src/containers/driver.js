@@ -5,7 +5,7 @@ import * as Actions from '../actions/booking';
 import { Container } from 'reactstrap';
 import Header from '../components/actionBar';
 import Meta from '../components/meta';
-
+import Table from '../components/table';
 const navHeader = ['Active Drivers', 'Idle Drivers', 'Offline Drivers'];
 const tableHeader = [
   'Driver Name',
@@ -49,6 +49,7 @@ class App extends Component {
             }
           ]}
         />
+        <Table navHeader={navHeader} tableHeader={tableHeader} />
       </Container>
     );
   }
@@ -58,7 +59,9 @@ const mapStateToProps = (state, ownProps) => ({
   ...ownProps
 });
 const mapDispatchToProps = dispatch => {
-  return { actions: bindActionCreators(Actions, dispatch) };
+  return {
+    actions: bindActionCreators(Actions, dispatch)
+  };
 };
 export default connect(
   mapStateToProps,

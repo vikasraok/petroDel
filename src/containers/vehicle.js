@@ -5,7 +5,7 @@ import * as Actions from '../actions/booking';
 import { Container } from 'reactstrap';
 import Header from '../components/actionBar';
 import Meta from '../components/meta';
-
+import Table from '../components/table';
 const navHeader = ['Listed Vehicles', 'Vehicles Removed'];
 const tableHeader = [
   'Vehicle #',
@@ -44,6 +44,7 @@ class App extends Component {
             }
           ]}
         />
+        <Table navHeader={navHeader} tableHeader={tableHeader} />
       </Container>
     );
   }

@@ -9,7 +9,7 @@ import {
   NavLink
 } from 'reactstrap';
 import Select from 'react-select';
-import Item from './metaItem';
+import Item from './item';
 import customStyles from '../../components/selectStyle';
 export default class Meta extends Component {
   constructor(props) {
