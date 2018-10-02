@@ -31,7 +31,7 @@ export default ({ component: C, props: cProps, ...rest }) => (
               <Nav className="ml-auto" navbar>
                 <NavItem>
                   <Link href="#" className="notification">
-                    <Icon icon={ic_notifications_none} size={28} />
+                    <Icon icon={ic_notifications_none} size={32} />
                   </Link>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
