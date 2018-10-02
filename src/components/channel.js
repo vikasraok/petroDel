@@ -56,7 +56,7 @@ export default ({ component: C, props: cProps, ...rest }) => (
           </Navbar>
           <div className="app-page">
             <div className="app-sidenav">
-              <NavLink to="/channel">Dashboard</NavLink>
+              <NavLink to="/channel/dashboard">Dashboard</NavLink>
               <NavLink to="/channel/booking">Order Booking</NavLink>
               <NavLink to="/channel/customer">Customer</NavLink>
               <NavLink to="/channel/driver">Driver</NavLink>

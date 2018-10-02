@@ -53,7 +53,7 @@ export default () => {
           <Redirect from="/" to="/login" />
         </Route>
         <Admin path="/admin" component={AsyncSuper} exact />
-        <Channel path="/channel" component={AsyncAdmin} exact />
+        <Channel path="/channel/dashboard" component={AsyncAdmin} exact />
         <Channel path="/channel/booking" component={AsyncBooking} exact />
         <Channel path="/channel/customer" component={AsyncCustomer} exact />
         <Channel path="/channel/driver" component={AsyncDriver} exact />
