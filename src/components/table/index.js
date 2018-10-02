@@ -76,7 +76,10 @@ export default class TableWrapper extends Component {
                       <InputGroupAddon addonType="prepend">
                         &#128269;
                       </InputGroupAddon>
-                      <Input placeholder="Search using Name/Mobile #" />
+                      <Input
+                        placeholder="Search using Name/Mobile #"
+                        autoComplete="none"
+                      />
                     </InputGroup>
                   </Col>
                   <Col>

@@ -24,7 +24,7 @@ export default ({ component: C, props: cProps, ...rest }) => (
     render={props =>
       isAuthenticated(props) ? (
         <div className="app">
-          {/* <header className="app-header"></header> */}
+          {/* <header className='app-header'></header> */}
           <Navbar color="primary" dark expand="md">
             <NavbarBrand href="/">PetroDel</NavbarBrand>
             <Collapse isOpen={true} navbar>
