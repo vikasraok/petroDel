@@ -8,7 +8,7 @@ import {
 import Loadable from 'react-loadable';
 import Loading from './loadable';
 /* routes */
-import Customer from '../containers/';
+import Channel from '../components/channel.js';
 /* loadables */
 const Async404 = Loadable({
   loader: () => import('../containers/notFound'),
@@ -46,11 +46,11 @@ export default () => {
         <Route path="/" exact>
           <Redirect from="/" to="/login" />
         </Route>
-        <Customer path="/channel/admin" component={AsyncAdmin} exact />
-        <Customer path="/channel/booking" component={AsyncBooking} exact />
-        <Customer path="/channel/customer" component={AsyncCustomer} exact />
-        <Customer path="/channel/driver" component={AsyncDriver} exact />
-        <Customer path="/channel/vehicle" component={AsyncVehicle} exact />
+        <Channel path="/channel/admin" component={AsyncAdmin} exact />
+        <Channel path="/channel/booking" component={AsyncBooking} exact />
+        <Channel path="/channel/customer" component={AsyncCustomer} exact />
+        <Channel path="/channel/driver" component={AsyncDriver} exact />
+        <Channel path="/channel/vehicle" component={AsyncVehicle} exact />
         <Route path="/login" component={AsyncLogin} exact />
         <Route component={Async404} />
       </Switch>

@@ -168,7 +168,6 @@ export default class DatePicker extends Component {
       return;
     }
     const date = chrono.parseDate(suggest(JSON.stringify(value).toLowerCase()));
-    console.log(date);
     if (date) {
       this.setState({
         options: [createOptionForDate(date), createCalendarOptions(date)]
