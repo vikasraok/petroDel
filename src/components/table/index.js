@@ -19,7 +19,7 @@ import {
   PaginationLink,
   Table
 } from 'reactstrap';
-import Item from './items';
+// import Item from './items';
 export default class TableWrapper extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +44,9 @@ export default class TableWrapper extends Component {
               <NavItem key={index}>
                 <NavLink
                   className={
-                    this.state.activeTab == `${index + 1}` ? 'active' : ''
+                    this.state.activeTab.toString() === `${index + 1}`
+                      ? 'active'
+                      : ''
                   }
                   onClick={() => {
                     this.toggle(index + 1);
@@ -63,7 +65,9 @@ export default class TableWrapper extends Component {
                 tabId={`index+1`}
                 key={index}
                 className={
-                  this.state.activeTab == `${index + 1}` ? 'active' : ''
+                  this.state.activeTab.toString() === `${index + 1}`
+                    ? 'active'
+                    : ''
                 }
               >
                 <Row>

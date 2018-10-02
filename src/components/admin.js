@@ -24,8 +24,7 @@ export default ({ component: C, props: cProps, ...rest }) => (
     render={props =>
       isAuthenticated(props) ? (
         <div className="app">
-          {/* <header className="app-header"></header> */}
-          <Navbar color="primary" dark expand="md">
+          <Navbar color="info" dark expand="md">
             <NavbarBrand href="/">PetroDel</NavbarBrand>
             <Collapse isOpen={true} navbar>
               <Nav className="ml-auto" navbar>
@@ -42,7 +41,6 @@ export default ({ component: C, props: cProps, ...rest }) => (
                         width="40"
                         alt="user"
                       />
-                      <span>John Doe</span>
                     </div>
                   </DropdownToggle>
                   <DropdownMenu right>
@@ -56,11 +54,11 @@ export default ({ component: C, props: cProps, ...rest }) => (
           </Navbar>
           <div className="app-page">
             <div className="app-sidenav">
-              <NavLink to="/channel">Dashboard</NavLink>
-              <NavLink to="/channel/booking">Order Booking</NavLink>
-              <NavLink to="/channel/customer">Customer</NavLink>
-              <NavLink to="/channel/driver">Driver</NavLink>
-              <NavLink to="/channel/vehicle">Vehicle</NavLink>
+              <NavLink to="/admin">Dashboard</NavLink>
+              <NavLink to="/admin/booking">Order Booking</NavLink>
+              <NavLink to="/admin/customer">Customer</NavLink>
+              <NavLink to="/admin/driver">Containers</NavLink>
+              <NavLink to="/admin/vehicle">Payments</NavLink>
             </div>
             <div className="app-main">
               <C {...props} {...cProps} />

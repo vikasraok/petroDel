@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../actions/booking';
+import * as Actions from '../actions/channel/booking';
 import { Container } from 'reactstrap';
-import Header from '../components/actionBar';
-import Meta from '../components/meta';
-import Table from '../components/table';
-const navHeader = ['Active Drivers', 'Idle Drivers', 'Offline Drivers'];
+import Header from './actionBar';
+import Meta from './meta';
+import Table from './table';
+
+const navHeader = [
+  'Active Bookings',
+  'Cancelled Bookings',
+  'Emergency Requests'
+];
 const tableHeader = [
-  'Driver Name',
+  'Order #',
+  'Customer Name',
   'Contact Number',
-  'Vehicle #',
+  'Fuel Type',
+  'Quantity',
   'Status',
   'Action'
 ];
@@ -18,33 +25,38 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <Header action="Add New Driver" />
+        <Header action="Add New Booking" />
         <Meta
           dashBoard={[
             {
-              value: '100',
-              label: 'Drivers Online',
-              class: 'success'
+              value: '1000',
+              label: 'Order Bookings',
+              class: 'primary'
             },
             {
-              value: '50',
-              label: 'Idle Drivers',
+              value: '100',
+              label: 'Cancelled Orders',
               class: 'warning'
             },
             {
-              value: '120',
-              label: 'Offline Drivers',
-              class: 'muted'
+              value: '1007575',
+              label: 'Tatal Kms Run',
+              class: 'primary'
             },
             {
               value: '10000',
               type: 'currency',
-              label: 'Driver Income',
+              label: 'Cash Collected',
               class: 'primary'
             },
             {
-              value: '50',
-              label: 'Unassigned Order',
+              value: '10000',
+              label: 'Total Online Payments',
+              class: 'primary'
+            },
+            {
+              value: '02',
+              label: 'Emergency Requests',
               class: 'danger'
             }
           ]}
@@ -59,9 +71,7 @@ const mapStateToProps = (state, ownProps) => ({
   ...ownProps
 });
 const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators(Actions, dispatch)
-  };
+  return { actions: bindActionCreators(Actions, dispatch) };
 };
 export default connect(
   mapStateToProps,

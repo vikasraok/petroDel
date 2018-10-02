@@ -88,7 +88,6 @@ const daysHeaderStyles = {
 const daysHeaderItemStyles = {
   color: '#999',
   cursor: 'default',
-  display: 'block',
   fontSize: '75%',
   fontWeight: '500',
   display: 'inline-block',

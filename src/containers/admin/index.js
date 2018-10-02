@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../actions/booking';
+import * as Actions from '../../actions/admin';
 import { Container, Row, Col } from 'reactstrap';
 class App extends Component {
   render() {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../actions/booking';
+import * as Actions from '../../actions/channel/booking';
 import { Container } from 'reactstrap';
-import Header from '../components/actionBar';
-import Meta from '../components/meta';
-import Table from '../components/table';
+import Header from '../../components/actionBar';
+import Meta from '../../components/meta';
+import Table from '../../components/table';
 
 const navHeader = [
   'Active Bookings',
