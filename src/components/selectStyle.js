@@ -2,7 +2,7 @@ const defaultStyle = {
   container: base => ({
     ...base,
     boxShadow: 'none',
-    width: '200px',
+    width: '180px',
     display: 'inline-block'
   }),
   control: base => ({
