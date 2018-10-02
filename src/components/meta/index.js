@@ -8,13 +8,15 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import Select from 'react-select';
 import Item from './item';
-import customStyles from '../../components/selectStyle';
+import DatePicker from '../datePicker';
+
+let dateValue = '';
 export default class Meta extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
+    this.setDate = this.setDate.bind(this);
     this.state = {
       activeTab: '1'
     };
@@ -24,6 +26,10 @@ export default class Meta extends Component {
     if (this.state.activeTab !== tab) {
       this.setState({ activeTab: tab });
     }
+  }
+  setDate(value) {
+    dateValue = value;
+    console.log(dateValue);
   }
   render() {
     const metaData = this.props.dashBoard;
@@ -65,7 +71,8 @@ export default class Meta extends Component {
           <TabPane tabId="1">
             <Row>
               <Col>
-                <Select styles={customStyles} placeholder={'Today'} />
+                {/* <Select styles={customStyles} placeholder={'Today'} /> */}
+                <DatePicker onChange={this.setDate} />
               </Col>
             </Row>
             <Row>

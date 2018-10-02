@@ -1,21 +1,29 @@
-export default {
+const defaultStyle = {
   container: base => ({
     ...base,
-    'box-shadow': 'none',
+    boxShadow: 'none',
     width: '200px',
     display: 'inline-block'
   }),
   control: base => ({
     ...base,
-    'min-height': '40px',
-    'background-color': 'rgba(0,0,0,0)',
-    'box-shadow': 'none',
+    minHeight: '40px',
+    backgroundColor: 'rgba(0,0,0,0)',
+    boxShadow: 'none',
     ':hover': {
       cursor: 'pointer'
     }
   }),
   option: base => ({
     ...base,
-    'text-align': 'left'
+    textAlign: 'left'
   })
 };
+export const datePicker = {
+  ...defaultStyle,
+  container: base => ({
+    ...base,
+    width: '300px'
+  })
+};
+export default defaultStyle;
