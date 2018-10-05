@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../../actions/channel/vehicle';
-import { Container, Button } from 'reactstrap';
+import {
+  Container,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap';
 import Header from '../../components/actionBar';
 import Meta from '../../components/meta';
 import Table from '../../components/table';
 import axios from 'axios';
 import { URL } from '../../const';
 import VehicleModel from '../../model/channel/vehicle';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 const navHeader = ['Listed Vehicles', 'Vehicles Removed'];
 const tableHeader = [
   'Vehicle #',
@@ -54,9 +62,14 @@ class App extends Component {
   }
   render() {
     const { vehicles } = this.props;
+    const { showAddVehicles } = this.state;
+    const { toggleModal: cancel } = this;
     return (
       <Container>
-        <Header action="Add New Vehicle" />
+        <Header
+          action="Add New Vehicle"
+          actionCallBack={this.toggleModal.bind(this)}
+        />
         <Meta
           dashBoard={[
             {
@@ -107,6 +120,73 @@ class App extends Component {
             })}
           />
         )}
+        <Modal isOpen={showAddVehicles} toggle={cancel}>
+          <ModalHeader>Add a new vehicle</ModalHeader>
+          <AvForm
+            onValidSubmit={this.addVehicle}
+            innerRef={c => (this.form = c)}
+          >
+            <ModalBody>
+              <AvField
+                name="reg_no"
+                label="Registration Number"
+                type="text"
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: 'Please enter a registration number'
+                  }
+                }}
+              />
+              <AvField
+                name="name"
+                label="Make"
+                type="text"
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: 'Please enter vehicle make'
+                  },
+                  minLength: {
+                    value: 3,
+                    errorMessage: 'The make should be at least 3 characters'
+                  }
+                }}
+              />{' '}
+              <AvField
+                name="capacity"
+                label="Capacity"
+                type="number"
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: 'Please enter vehicle capacity'
+                  }
+                }}
+                min="1"
+              />
+              <AvField
+                name="partner"
+                label="Channel Partner"
+                type="text"
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: 'Please enter channel partner name'
+                  }
+                }}
+              />
+            </ModalBody>
+            <ModalFooter>
+              <Button color="light" onClick={cancel}>
+                Cancel
+              </Button>{' '}
+              <Button color="primary" type="submit">
+                Add
+              </Button>
+            </ModalFooter>
+          </AvForm>
+        </Modal>
       </Container>
     );
   }
