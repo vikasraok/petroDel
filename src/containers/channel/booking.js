@@ -17,7 +17,11 @@ import axios from 'axios';
 import { URL } from '../../const';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import BookingModel from '../../model/channel/booking';
-const navHeader = ['Active Bookings'];
+const navHeader = [
+  'Active Bookings',
+  'Cancelled Bookings',
+  'Emergency Requests'
+];
 const tableHeader = [
   'Order #',
   'Customer Name',
@@ -43,6 +47,7 @@ class App extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.addBooking = this.addBooking.bind(this);
     this.handleBooking = this.handleBooking.bind(this);
+    this.fetchData = this.fetchData.bind(this);
   }
   addBooking() {
     console.log(this.form.name.value);
@@ -51,7 +56,7 @@ class App extends Component {
     this.toggleModal();
   }
   handleBooking(status) {
-    console.log(status);
+    this.setState({ update: Math.random() });
   }
   toggleModal() {
     this.setState(prevState => {
@@ -60,13 +65,16 @@ class App extends Component {
       };
     });
   }
-  componentDidMount() {
+  fetchData() {
     axios
       .get(URL + '/partner/order?channel_partner=phoenix')
       .then(response => {
         this.props.actions.setBookings(new BookingModel(response.data.orders));
       })
       .catch(e_response => {});
+  }
+  componentDidMount() {
+    this.fetchData();
   }
   render() {
     const { showAddBooking } = this.state;
