@@ -8,7 +8,6 @@ import Meta from '../../components/meta';
 import Table from '../../components/table';
 import axios from 'axios';
 import { URL } from '../../const';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
 import DriverModel from '../../model/channel/driver';
 const navHeader = ['Active Drivers', 'Idle Drivers', 'Offline Drivers'];
 const tableHeader = [
