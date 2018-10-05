@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../../actions/channel/driver';
-import { Container, Button } from 'reactstrap';
+import {
+  Container,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap';
 import Header from '../../components/actionBar';
 import Meta from '../../components/meta';
 import Table from '../../components/table';
 import axios from 'axios';
 import { URL } from '../../const';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import DriverModel from '../../model/channel/driver';
 const navHeader = ['Active Drivers', 'Idle Drivers', 'Offline Drivers'];
 const tableHeader = [
@@ -53,10 +61,15 @@ class App extends Component {
     this.fetchData();
   }
   render() {
+    const { showAddDrivers } = this.state;
+    const { toggleModal: cancel } = this;
     const { drivers } = this.props;
     return (
       <Container>
-        <Header action="Add New Driver" />
+        <Header
+          action="Add New Driver"
+          actionCallBack={this.toggleModal.bind(this)}
+        />
         <Meta
           dashBoard={[
             {
@@ -110,6 +123,65 @@ class App extends Component {
             })}
           />
         )}
+        <Modal isOpen={showAddDrivers} toggle={cancel}>
+          <ModalHeader>Add a new driver</ModalHeader>
+          <AvForm
+            onValidSubmit={this.addDriver}
+            innerRef={c => (this.form = c)}
+          >
+            <ModalBody>
+              <AvField
+                name="name"
+                label="Driver Name"
+                type="text"
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: 'Please enter a name'
+                  },
+                  minLength: {
+                    value: 3,
+                    errorMessage: 'The name should be at least 3 characters'
+                  }
+                }}
+              />
+              <AvField
+                name="number"
+                label="Contact Number"
+                type="tel"
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: 'Please enter a phone number'
+                  },
+                  pattern: {
+                    value: '[0-9]{10}',
+                    errorMessage: 'Phone number should have 10 digits'
+                  }
+                }}
+              />
+              <AvField
+                name="reg_no"
+                label="Registration Number"
+                type="text"
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: 'Please enter a registration number'
+                  }
+                }}
+              />
+            </ModalBody>
+            <ModalFooter>
+              <Button color="light" onClick={cancel}>
+                Cancel
+              </Button>{' '}
+              <Button color="primary" type="submit">
+                Add
+              </Button>
+            </ModalFooter>
+          </AvForm>
+        </Modal>
       </Container>
     );
   }
