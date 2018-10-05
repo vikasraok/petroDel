@@ -1,6 +1,6 @@
 class BookingModel {
-  constructor(booking) {
-    this.booking = booking;
+  constructor(bookings) {
+    this.bookings = bookings;
   }
 }
 

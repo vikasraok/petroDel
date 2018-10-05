@@ -35,11 +35,11 @@ export default class TableWrapper extends Component {
     }
   }
   render() {
-    const props = this.props;
+    const { navHeader, tableHeader, tableBody } = this.props;
     return (
       <div>
         <Nav tabs>
-          {props.navHeader.map((nav, index) => {
+          {navHeader.map((nav, index) => {
             return (
               <NavItem key={index}>
                 <NavLink
@@ -59,7 +59,7 @@ export default class TableWrapper extends Component {
           })}
         </Nav>
         <TabContent>
-          {props.navHeader.map((tab, index) => {
+          {navHeader.map((tab, index) => {
             return (
               <TabPane
                 tabId={`index+1`}
@@ -108,11 +108,12 @@ export default class TableWrapper extends Component {
                     <Table>
                       <thead>
                         <tr>
-                          {props.tableHeader.map((value, index) => {
-                            return <th key={index}>{value}</th>;
+                          {tableHeader.map((header, index) => {
+                            return <th key={index}>{header}</th>;
                           })}
                         </tr>
                       </thead>
+                      <tbody>{tableBody}</tbody>
                     </Table>
                   </Col>
                 </Row>

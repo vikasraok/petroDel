@@ -16,12 +16,8 @@ import Table from '../../components/table';
 import axios from 'axios';
 import { URL } from '../../const';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-
-const navHeader = [
-  'Active Bookings',
-  'Cancelled Bookings',
-  'Emergency Requests'
-];
+import BookingModel from '../../model/channel/booking';
+const navHeader = ['Active Bookings'];
 const tableHeader = [
   'Order #',
   'Customer Name',
@@ -32,6 +28,12 @@ const tableHeader = [
   'Action'
 ];
 
+const getAction = status => {
+  if (status === 'ODR_PL') return 'Accept';
+  else if (status === 'ARR_PP') return 'Assign Driver';
+  else if (status === 'DISPATCHED') return 'Track';
+  else return 'Delivered';
+};
 class App extends Component {
   state = {
     showAddBooking: false
@@ -40,12 +42,16 @@ class App extends Component {
     super(props);
     this.toggleModal = this.toggleModal.bind(this);
     this.addBooking = this.addBooking.bind(this);
+    this.handleBooking = this.handleBooking.bind(this);
   }
   addBooking() {
     console.log(this.form.name.value);
     console.log(this.form.number.value);
     console.log(this.form.fuel.value);
     this.toggleModal();
+  }
+  handleBooking(status) {
+    console.log(status);
   }
   toggleModal() {
     this.setState(prevState => {
@@ -57,15 +63,15 @@ class App extends Component {
   componentDidMount() {
     axios
       .get(URL + '/partner/order?channel_partner=phoenix')
-      .then(response => {})
+      .then(response => {
+        this.props.actions.setBookings(new BookingModel(response.data.orders));
+      })
       .catch(e_response => {});
-  }
-  componentWillReceiveProps() {
-    this.form.reset();
   }
   render() {
     const { showAddBooking } = this.state;
-    const { addBooking: submit, toggleModal: cancel } = this;
+    const { toggleModal: cancel } = this;
+    const { bookings } = this.props;
     return (
       <Container>
         <Header
@@ -107,7 +113,32 @@ class App extends Component {
             }
           ]}
         />
-        <Table navHeader={navHeader} tableHeader={tableHeader} />
+        {bookings && (
+          <Table
+            navHeader={navHeader}
+            tableHeader={tableHeader}
+            tableBody={bookings.map((booking, index) => {
+              const { status } = booking;
+              return (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{booking.username}</td>
+                  <td>{booking.mobile}</td>
+                  <td>{booking.p_type}</td>
+                  <td>{booking.quantity}</td>
+                  <td>{booking.status}</td>
+                  <td
+                    onClick={() => {
+                      this.handleBooking(booking.order_id);
+                    }}
+                  >
+                    <Button color="link">{getAction(status)}</Button>
+                  </td>
+                </tr>
+              );
+            })}
+          />
+        )}
         <Modal isOpen={showAddBooking} toggle={cancel}>
           <ModalHeader>Add a new booking</ModalHeader>
           <AvForm
@@ -189,10 +220,12 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = (state, ownProps) => ({
-  ...state,
-  ...ownProps
-});
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ...state.channel.bookings,
+    ...ownProps
+  };
+};
 const mapDispatchToProps = dispatch => {
   return { actions: bindActionCreators(Actions, dispatch) };
 };

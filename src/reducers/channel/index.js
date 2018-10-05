@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import channel from './channel';
+import bookings from './booking';
 export default combineReducers({
-  channel
+  bookings
 });
