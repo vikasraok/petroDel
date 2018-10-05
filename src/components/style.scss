@@ -20,6 +20,9 @@ $gray : #cecece;
       padding: 5px 0;
     }
   }
+  .dropdown-item{
+    color: #444;
+  }
   .user{
     display: inline-block;
     img{
@@ -99,7 +102,7 @@ $gray : #cecece;
         height: 40px;
         margin-top: -2px;
         .btn{
-          color: #444;
+          color: #6c757d;
           border: 1px solid #cecece;
         }
       }.pagination{

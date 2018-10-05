@@ -2,7 +2,7 @@ import React from 'react';
 const loading = {
   position: 'absolute',
   left: '50%',
-  top: 'calc(50% - 20px)',
+  top: 'calc(50% - 50px)',
   borderBottom: '3px solid #008be7',
   borderLeft: '3px solid #008be7',
   borderRight: '3px solid #008be7',

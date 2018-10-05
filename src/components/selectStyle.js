@@ -14,6 +14,14 @@ const defaultStyle = {
       cursor: 'pointer'
     }
   }),
+  input: base => ({
+    ...base,
+    color: '#444'
+  }),
+  singleValue: base => ({
+    ...base,
+    color: '#444'
+  }),
   option: base => ({
     ...base,
     textAlign: 'left'

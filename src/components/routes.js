@@ -50,7 +50,7 @@ export default () => {
     <Router>
       <Switch>
         <Route path="/" exact>
-          <Redirect from="/" to="/login" />
+          <Redirect from="/" to="/channel/dashboard" />
         </Route>
         <Admin path="/admin" component={AsyncSuper} exact />
         <Channel path="/channel/dashboard" component={AsyncAdmin} exact />
