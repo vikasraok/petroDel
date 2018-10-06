@@ -32,6 +32,10 @@ const tableHeader = [
   'Action'
 ];
 
+const statuses = {
+  ODR_PL: 'accept',
+  ARR_PP: 'ass_driver'
+};
 const getAction = status => {
   if (status === 'ODR_PL') return 'Accept';
   else if (status === 'ARR_PP') return 'Assign Driver';
@@ -55,8 +59,22 @@ class App extends Component {
     console.log(this.form.fuel.value);
     this.toggleModal();
   }
-  handleBooking(status) {
-    this.setState({ update: Math.random() });
+  handleBooking(status, id) {
+    const _status = statuses[status];
+    let payload;
+    if (_status) {
+      switch (_status) {
+        case 'accept':
+          payload = {
+            action_type: statuses[status],
+            order_id: id
+          };
+          break;
+      }
+      axios.post(URL + '/partner/action/order', payload).then(response => {
+        this.fetchData();
+      });
+    }
   }
   toggleModal() {
     this.setState(prevState => {
@@ -141,7 +159,7 @@ class App extends Component {
                   <td className="text-capitalize">{booking.status}</td>
                   <td
                     onClick={() => {
-                      this.handleBooking(booking.order_id);
+                      this.handleBooking(booking.status, booking.order_id);
                     }}
                   >
                     <Button color="link">{getAction(status)}</Button>
