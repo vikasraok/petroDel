@@ -69,7 +69,7 @@ class App extends Component {
     axios
       .get(URL + '/partner/order?channel_partner=phoenix')
       .then(response => {
-        this.props.actions.setBookings(new BookingModel(response.data.orders));
+        this.props.actions.init(new BookingModel(response.data));
       })
       .catch(e_response => {});
   }
@@ -79,48 +79,52 @@ class App extends Component {
   render() {
     const { showAddBooking } = this.state;
     const { toggleModal: cancel } = this;
-    const { bookings } = this.props;
+    const { bookings, meta } = this.props;
+    console.log(meta);
     return (
       <Container>
         <Header
           action="Add New Booking"
           actionCallBack={this.toggleModal.bind(this)}
         />
-        <Meta
-          dashBoard={[
-            {
-              value: '1000',
-              label: 'Order Bookings',
-              class: 'primary'
-            },
-            {
-              value: '100',
-              label: 'Cancelled Orders',
-              class: 'warning'
-            },
-            {
-              value: '1007575',
-              label: 'Tatal Kms Run',
-              class: 'primary'
-            },
-            {
-              value: '10000',
-              type: 'currency',
-              label: 'Cash Collected',
-              class: 'primary'
-            },
-            {
-              value: '10000',
-              label: 'Total Online Payments',
-              class: 'primary'
-            },
-            {
-              value: '02',
-              label: 'Emergency Requests',
-              class: 'danger'
-            }
-          ]}
-        />
+        {meta && (
+          <Meta
+            dashBoard={[
+              {
+                value: meta.order_bookings,
+                label: 'Order Bookings',
+                class: 'primary'
+              },
+              {
+                value: meta.canceled_bookings,
+                label: 'Cancelled Orders',
+                class: 'warning'
+              },
+              {
+                value: meta.total_km,
+                label: 'Tatal Kms Run',
+                class: 'primary'
+              },
+              {
+                value: Math.floor(meta.gmv),
+                type: 'currency',
+                label: 'Cash Collected',
+                class: 'primary'
+              },
+              {
+                value: Math.floor(meta.online_gmv),
+                type: 'currency',
+                label: 'Total Online Payments',
+                class: 'primary'
+              },
+              {
+                value: '02',
+                label: 'Emergency Requests',
+                class: 'danger'
+              }
+            ]}
+          />
+        )}
         {bookings && (
           <Table
             navHeader={navHeader}
@@ -129,12 +133,12 @@ class App extends Component {
               const { status } = booking;
               return (
                 <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{booking.username}</td>
-                  <td>{booking.mobile}</td>
-                  <td>{booking.p_type}</td>
-                  <td>{booking.quantity}</td>
-                  <td>{booking.status}</td>
+                  <td className="text-capitalize">{index + 1}</td>
+                  <td className="text-capitalize">{booking.username}</td>
+                  <td className="text-capitalize">{booking.mobile}</td>
+                  <td className="text-capitalize">{booking.p_type}</td>
+                  <td className="text-capitalize">{booking.quantity}</td>
+                  <td className="text-capitalize">{booking.status}</td>
                   <td
                     onClick={() => {
                       this.handleBooking(booking.order_id);

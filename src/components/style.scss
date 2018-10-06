@@ -87,6 +87,11 @@ $gray : #cecece;
         box-shadow: none;
       }
     }
+    td{.btn{
+      height: unset;
+      margin:0;
+      padding: 0
+    }}
     .tab-content{
       padding: 20px 0;
       nav{
