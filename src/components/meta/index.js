@@ -29,7 +29,6 @@ export default class Meta extends Component {
   }
   setDate(value) {
     dateValue = value;
-    console.log(dateValue);
   }
   render() {
     const metaData = this.props.dashBoard;

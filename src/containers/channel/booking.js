@@ -69,6 +69,12 @@ class App extends Component {
             action_type: statuses[status],
             order_id: id
           };
+        case 'ass_driver':
+          payload = {
+            action_type: statuses[status],
+            driver_name: 'dhanush',
+            order_id: id
+          };
           break;
       }
       axios.post(URL + '/partner/action/order', payload).then(response => {
@@ -98,7 +104,6 @@ class App extends Component {
     const { showAddBooking } = this.state;
     const { toggleModal: cancel } = this;
     const { bookings, meta } = this.props;
-    console.log(meta);
     return (
       <Container>
         <Header
